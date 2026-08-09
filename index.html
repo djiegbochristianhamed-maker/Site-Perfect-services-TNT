@@ -7,443 +7,247 @@
 <meta name="description" content="Installation, réglage, dépannage et maintenance TNT, satellite et IPTV à Abidjan. Techniciens qualifiés, intervention rapide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Big+Shoulders+Text:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy: #0B1B33;
-    --navy-2: #122A4D;
-    --gold: #C9A227;
-    --gold-light: #E9CE7C;
-    --cream: #F6F3EA;
-    --ink: #1A1D24;
-    --slate: #5B6472;
-    --white: #FFFFFF;
-    --radius: 14px;
+    --ink: #17130F;
+    --paper: #F6EFE3;
+    --paper-2: #EFE4D2;
+    --rust: #BB4E23;
+    --rust-dark: #8F3A19;
+    --sky: #3E6E96;
+    --gold: #E8A93B;
+    --stone: #6B6355;
+    --cream-text: #F8F2E6;
+    --radius-card: 4px;
     --ease: cubic-bezier(.22,.61,.36,1);
   }
 
   *{ box-sizing: border-box; margin:0; padding:0; }
-
   html{ scroll-behavior:smooth; }
-
   body{
-    font-family: 'Inter', sans-serif;
+    font-family:'Work Sans', sans-serif;
     color: var(--ink);
-    background: var(--cream);
-    line-height: 1.55;
+    background: var(--paper);
+    line-height:1.6;
     -webkit-font-smoothing: antialiased;
   }
-
-  h1, h2, h3, .display{
-    font-family: 'Fraunces', serif;
-    letter-spacing: -0.01em;
-  }
-
-  a{ color: inherit; text-decoration: none; }
+  h1,h2,h3,.display{ font-family:'Big Shoulders Display', sans-serif; text-transform: uppercase; letter-spacing:0.005em; }
+  .label{ font-family:'Big Shoulders Text', sans-serif; text-transform:uppercase; font-weight:700; letter-spacing:0.12em; }
+  a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
   ul{ list-style:none; }
+  .container{ max-width:1180px; margin:0 auto; padding:0 28px; }
 
-  .container{
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  /* signal bars icon */
+  .bars{ display:inline-flex; align-items:flex-end; gap:3px; height:14px; }
+  .bars span{ width:3px; display:block; background: currentColor; }
+  .bars span:nth-child(1){ height:35%; }
+  .bars span:nth-child(2){ height:60%; }
+  .bars span:nth-child(3){ height:80%; }
+  .bars span:nth-child(4){ height:100%; }
 
-  /* ---------- Signal signature motif ---------- */
   .eyebrow{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-family:'Inter', sans-serif;
-    font-weight:600;
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-  }
-  .pulse-dot{
-    position: relative;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink:0;
-  }
-  .pulse-dot::before, .pulse-dot::after{
-    content:'';
-    position:absolute;
-    top:50%; left:50%;
-    width:8px; height:8px;
-    border-radius:50%;
-    border:1px solid var(--gold);
-    transform: translate(-50%,-50%);
-    animation: signal-ring 2.4s var(--ease) infinite;
-    opacity:0;
-  }
-  .pulse-dot::after{ animation-delay: 1.2s; }
-  @keyframes signal-ring{
-    0%{ width:8px; height:8px; opacity:0.7; }
-    70%{ width:34px; height:34px; opacity:0; }
-    100%{ width:34px; height:34px; opacity:0; }
+    display:flex; align-items:center; gap:10px;
+    font-size:12.5px; color: var(--rust);
   }
 
-  /* ---------- Header ---------- */
+  /* header */
   header{
-    position: sticky;
-    top:0;
-    z-index: 100;
-    background: rgba(11,27,51,0.92);
-    backdrop-filter: saturate(150%) blur(8px);
-    color: var(--white);
+    position: sticky; top:0; z-index:100;
+    background: var(--ink);
+    color: var(--cream-text);
+    border-bottom: 3px solid var(--rust);
   }
   .header-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
   }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-weight:600;
-    font-size: 17px;
-  }
+  .brand{ display:flex; align-items:center; gap:12px; }
   .brand-mark{
-    width:38px; height:38px;
-    border-radius:8px;
-    background: linear-gradient(160deg, var(--gold-light), var(--gold));
+    width:36px; height:36px;
+    background: var(--rust);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    color: var(--navy);
-    font-size: 14px;
+    color: var(--ink); font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:16px;
   }
-  .header-cta{
-    display:flex;
-    gap:10px;
-  }
+  .brand-name{ font-family:'Big Shoulders Display', sans-serif; font-weight:700; font-size:19px; letter-spacing:0.01em; text-transform:uppercase; }
+  .header-cta{ display:flex; gap:10px; }
   .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding: 11px 20px;
-    border-radius: 999px;
-    font-weight:600;
-    font-size: 14px;
-    border: 1px solid transparent;
-    cursor:pointer;
-    transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
-    white-space: nowrap;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; font-family:'Big Shoulders Text', sans-serif;
+    font-weight:700; font-size:14px; letter-spacing:0.06em; text-transform:uppercase;
+    border:1.5px solid transparent; cursor:pointer;
+    transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+    white-space:nowrap;
   }
-  .btn-gold{
-    background: var(--gold);
-    color: var(--navy);
-  }
-  .btn-gold:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(201,162,39,0.35);
-  }
-  .btn-outline{
-    border-color: rgba(255,255,255,0.5);
-    color: var(--white);
-  }
-  .btn-outline:hover{
-    background: rgba(255,255,255,0.1);
-    transform: translateY(-2px);
-  }
+  .btn-rust{ background: var(--rust); color: var(--cream-text); }
+  .btn-rust:hover{ background: var(--rust-dark); transform: translateY(-2px); }
+  .btn-line{ border-color: rgba(248,242,230,0.45); color: var(--cream-text); }
+  .btn-line:hover{ background: rgba(248,242,230,0.1); transform: translateY(-2px); }
+  .btn-ink{ background: var(--ink); color: var(--cream-text); }
+  .btn-ink:hover{ background:#000; transform: translateY(-2px); }
+  @media (max-width:640px){ .header-cta .btn-line{ display:none; } }
 
-  @media (max-width: 640px){
-    .header-cta .btn-outline{ display:none; }
-  }
-
-  /* ---------- Hero ---------- */
+  /* hero */
   .hero{
-    position: relative;
-    min-height: 88vh;
-    display:flex;
-    align-items:flex-end;
-    overflow:hidden;
-    background: var(--navy);
+    background: var(--ink);
+    color: var(--cream-text);
+    padding: 64px 0 0;
   }
-  .hero img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit: cover;
-    opacity: 0;
-    transform: scale(1.08);
-    animation: hero-in 1.6s var(--ease) forwards;
+  .hero-grid{
+    display:grid; grid-template-columns: 1.05fr 0.95fr;
+    gap:48px; align-items:center;
   }
-  @keyframes hero-in{
-    to{ opacity: 0.9; transform: scale(1); }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero-copy h1{
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight:800; line-height:0.94; margin:16px 0 22px;
   }
-  .hero::after{
-    content:'';
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(11,27,51,0.05) 0%, rgba(11,27,51,0.12) 45%, rgba(11,27,51,0.62) 100%);
-  }
-  .hero-content{
-    position:relative;
-    z-index:2;
-    color: var(--white);
-    padding: 80px 24px 56px;
-    max-width: 780px;
-  }
-  .hero-content .eyebrow{ color: var(--gold-light); text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
-  .hero h1{
-    font-size: clamp(2.1rem, 5.2vw, 3.6rem);
-    font-weight: 600;
-    font-style: italic;
-    line-height: 1.08;
-    text-shadow: 0 2px 18px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4);
-    opacity:0;
-    transform: translateY(24px);
-    animation: rise-in .9s var(--ease) forwards;
-    animation-delay: .3s;
-  }
+  .hero-copy h1 em{ font-style:normal; color: var(--rust); }
   .hero-sub{
-    margin-top: 20px;
-    font-size: 15px;
-    letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.92);
-    font-style: italic;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-    opacity:0;
-    transform: translateY(18px);
-    animation: rise-in .9s var(--ease) forwards;
-    animation-delay: .55s;
+    font-size:16px; color: rgba(248,242,230,0.72);
+    max-width:420px; margin-bottom:32px;
   }
-  .hero-actions{
-    margin-top: 34px;
-    display:flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    opacity:0;
-    transform: translateY(18px);
-    animation: rise-in .9s var(--ease) forwards;
-    animation-delay: .8s;
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+
+  .hero-media{
+    position:relative; overflow:hidden;
+    aspect-ratio: 5/4.3;
+    border: 1px solid rgba(248,242,230,0.15);
   }
-  @keyframes rise-in{
-    to{ opacity:1; transform: translateY(0); }
+  .hero-media img{
+    width:100%; height:100%; object-fit:cover;
+    filter: grayscale(1) contrast(1.5) brightness(0.85);
+    animation: tune-in 1.7s var(--ease) forwards;
+    animation-delay:.15s;
+  }
+  @keyframes tune-in{ to{ filter: grayscale(0) contrast(1) brightness(1); } }
+  .hero-media::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.14) 0px, rgba(255,255,255,0.14) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode: overlay;
+    animation: scan-fade 1.7s var(--ease) forwards;
+    animation-delay:.15s;
+  }
+  @keyframes scan-fade{ to{ opacity:0; } }
+  .hero-media::after{
+    content:''; position:absolute; left:0; right:0; height:8%; top:-12%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.55), transparent);
+    animation: sweep 1s var(--ease) forwards;
+    animation-delay:.15s;
+  }
+  @keyframes sweep{ to{ top:112%; } }
+  .hero-media-tag{
+    position:absolute; left:0; bottom:0;
+    background: var(--rust); color: var(--cream-text);
+    padding:8px 14px;
+    font-family:'Big Shoulders Text', sans-serif; font-weight:700;
+    font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
   }
 
-  /* ---------- Section shell ---------- */
-  section{ padding: 96px 0; }
-  .section-head{
-    max-width: 640px;
-    margin-bottom: 52px;
+  /* ticker */
+  .ticker{
+    background: var(--rust); color: var(--ink);
+    overflow:hidden; border-top:1px solid rgba(0,0,0,0.15);
   }
+  .ticker-track{
+    display:flex; width:max-content;
+    animation: marquee 26s linear infinite;
+    padding: 11px 0;
+  }
+  .ticker-track span{
+    font-family:'Big Shoulders Text', sans-serif; font-weight:700;
+    font-size:14px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:0 22px; white-space:nowrap;
+    border-right: 1px solid rgba(0,0,0,0.25);
+  }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .ticker-track{ animation:none; } }
+
+  /* section shell */
+  section{ padding:88px 0; }
+  .section-head{ max-width:600px; margin-bottom:48px; }
   .section-head h2{
-    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
-    font-weight: 500;
-    color: var(--navy);
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+    font-weight:800; margin-top:12px; line-height:1;
   }
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .75s var(--ease), transform .75s var(--ease); }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
 
-  .reveal{
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .8s var(--ease), transform .8s var(--ease);
-  }
-  .reveal.is-visible{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ---------- Services ---------- */
-  .services-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  @media (max-width: 860px){
-    .services-grid{ grid-template-columns: 1fr; }
-  }
+  /* services */
+  .services{ background: var(--paper); }
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background: var(--ink); border:1px solid var(--ink); }
+  @media (max-width:860px){ .services-grid{ grid-template-columns:1fr; } }
   .service-card{
-    background: var(--white);
-    border-radius: var(--radius);
-    overflow:hidden;
-    box-shadow: 0 1px 2px rgba(11,27,51,0.06);
-    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+    background: var(--paper); padding:34px 28px;
+    transition: background .4s var(--ease);
   }
-  .service-card:hover{
-    transform: translateY(-8px);
-    box-shadow: 0 22px 40px rgba(11,27,51,0.14);
-  }
-  .service-media{
-    aspect-ratio: 4/3;
-    overflow:hidden;
-    background: var(--navy-2);
-  }
-  .service-media img{
-    width:100%; height:100%; object-fit: cover;
-    transition: transform .7s var(--ease);
-  }
-  .service-card:hover .service-media img{
-    transform: scale(1.08);
-  }
-  .service-body{ padding: 24px; }
-  .service-icon{ font-size: 22px; margin-bottom: 10px; display:block; }
-  .service-body h3{
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--navy);
-  }
-  .service-body p{
-    font-size: 14.5px;
-    color: var(--slate);
-  }
+  .service-card:hover{ background: var(--paper-2); }
+  .service-icon{ color: var(--rust); margin-bottom:22px; }
+  .service-icon svg{ width:34px; height:34px; }
+  .service-card h3{ font-size:22px; font-weight:700; margin-bottom:12px; }
+  .service-card p{ font-size:14.5px; color: var(--stone); }
 
-  /* ---------- Why us (navy band) ---------- */
-  .why{
-    background: var(--navy);
-    color: var(--white);
-    position: relative;
-    overflow:hidden;
-  }
-  .why::before{
-    content:'';
-    position:absolute;
-    top:-140px; right:-140px;
-    width: 420px; height: 420px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,162,39,0.18);
-  }
-  .why::after{
-    content:'';
-    position:absolute;
-    top:-70px; right:-70px;
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,162,39,0.28);
-  }
-  .why .section-head h2{ color: var(--white); }
-  .why .section-head p{ color: rgba(255,255,255,0.7); margin-top: 12px; }
-  .why-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    position: relative;
-    z-index:1;
-  }
-  @media (max-width: 860px){
-    .why-grid{ grid-template-columns: 1fr; }
-  }
-  .why-item .icon{
-    font-size: 26px;
-    display:inline-block;
-    margin-bottom: 14px;
-  }
+  /* why band */
+  .why{ background: var(--ink); color: var(--cream-text); }
+  .why .section-head .eyebrow{ color: var(--gold); }
+  .why .section-head h2{ color: var(--cream-text); }
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:44px; }
+  @media (max-width:860px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-item{ border-top:3px solid var(--rust); padding-top:20px; }
   .why-item h3{
-    font-family:'Fraunces', serif;
-    font-weight: 500;
-    font-size: 19px;
-    margin-bottom: 10px;
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-weight:800; margin-bottom:12px; line-height:0.95;
   }
-  .why-item p{
-    font-size: 14.5px;
-    color: rgba(255,255,255,0.72);
-  }
+  .why-item p{ font-size:14.5px; color: rgba(248,242,230,0.66); max-width:260px; }
 
-  /* ---------- Trust / testimonials ---------- */
-  .trust{
-    text-align:center;
-  }
-  .stars{
-    color: var(--gold);
-    font-size: 20px;
-    letter-spacing: 3px;
-    margin-bottom: 16px;
-  }
-  .trust h2{
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--navy);
-    font-weight: 500;
-    margin-bottom: 44px;
-  }
-  .avatar-row{
-    display:flex;
-    justify-content:center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .avatar{
-    width: 96px; height: 96px;
-    border-radius: 50%;
-    overflow:hidden;
-    border: 3px solid var(--white);
-    box-shadow: 0 8px 20px rgba(11,27,51,0.14);
-    transition: transform .45s var(--ease);
-  }
-  .avatar:hover{ transform: translateY(-6px) scale(1.04); }
-  .avatar img{ width:100%; height:100%; object-fit: cover; }
+  /* trust */
+  .trust{ text-align:center; }
+  .stars{ color: var(--rust); font-size:20px; letter-spacing:4px; margin-bottom:14px; }
+  .trust h2{ font-size: clamp(1.7rem,3.4vw,2.4rem); font-weight:800; margin-bottom:48px; }
+  .avatar-row{ display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .avatar{ width:92px; height:92px; overflow:hidden; border:2px solid var(--ink); transition: transform .4s var(--ease); }
+  .avatar:hover{ transform: translateY(-6px); }
+  .avatar img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.15) contrast(1.05); }
 
-  /* ---------- Footer / CTA band ---------- */
+  /* cta band */
   .cta-band{
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
-    color: var(--white);
-    text-align:center;
-    padding: 90px 24px;
+    background: var(--rust); color: var(--ink);
+    text-align:center; padding:96px 28px;
   }
   .cta-band h2{
-    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-    font-weight: 500;
-    font-style: italic;
-    margin-bottom: 18px;
+    font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight:900;
+    margin-bottom:18px; line-height:0.95;
   }
-  .cta-band p{
-    color: rgba(255,255,255,0.72);
-    margin-bottom: 34px;
-    font-size: 15.5px;
-  }
-  .cta-band .btn-row{
-    display:flex;
-    justify-content:center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
+  .cta-band p{ color: rgba(23,19,15,0.72); margin-bottom:32px; font-size:15.5px; }
+  .cta-band .btn-row{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .cta-band .btn-ink{ background: var(--ink); color: var(--cream-text); }
+  .cta-band .btn-line{ border-color: rgba(23,19,15,0.5); color: var(--ink); }
+  .cta-band .btn-line:hover{ background: rgba(23,19,15,0.08); }
 
   footer{
-    background: var(--navy);
-    color: rgba(255,255,255,0.55);
-    text-align:center;
-    padding: 26px 24px;
-    font-size: 13px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--ink); color: rgba(248,242,230,0.5);
+    text-align:center; padding:24px 28px; font-size:13px;
   }
 
-  /* ---------- Floating WhatsApp ---------- */
   .float-wa{
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 200;
-    width: 58px; height: 58px;
-    border-radius: 50%;
-    background: var(--gold);
+    position:fixed; right:20px; bottom:20px; z-index:200;
+    width:56px; height:56px;
+    background: var(--rust); color: var(--cream-text);
     display:flex; align-items:center; justify-content:center;
-    box-shadow: 0 10px 26px rgba(201,162,39,0.4);
-    font-size: 26px;
-    transition: transform .35s var(--ease);
+    box-shadow: 0 8px 22px rgba(187,78,35,0.4);
+    transition: transform .3s var(--ease);
   }
   .float-wa:hover{ transform: scale(1.08); }
-  .float-wa::before{
-    content:'';
-    position:absolute; inset:0;
-    border-radius:50%;
-    border: 2px solid var(--gold);
-    animation: signal-ring 2.2s var(--ease) infinite;
-  }
+  .float-wa svg{ width:26px; height:26px; }
 
   @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
-      scroll-behavior: auto !important;
+    *,*::before,*::after{
+      animation-duration:0.001ms !important; animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important; scroll-behavior:auto !important;
     }
+    .hero-media img{ filter:none; }
   }
 </style>
 </head>
@@ -453,65 +257,83 @@
   <div class="header-inner">
     <div class="brand">
       <span class="brand-mark">PS</span>
-      <span>Perfect Services TNT</span>
+      <span class="brand-name">Perfect Services TNT</span>
     </div>
     <div class="header-cta">
-      <a class="btn btn-outline" href="tel:+2250707470833">Appeler</a>
-      <a class="btn btn-gold" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
+      <a class="btn btn-line" href="tel:+2250707470833">Appeler</a>
+      <a class="btn btn-rust" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
     </div>
   </div>
 </header>
 
 <section class="hero">
-  <img src="hero-technicien-antenne.jpg" alt="Technicien installant une antenne satellite sur un toit à Abidjan">
-  <div class="hero-content">
-    <div class="eyebrow"><span class="pulse-dot"></span>Abidjan & environs</div>
-    <h1>Installation TNT & Satellite à Abidjan</h1>
-    <p class="hero-sub">Installation • Réglage • Dépannage • Maintenance • IPTV</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
-      <a class="btn btn-outline" href="tel:+2250707470833">Appelez maintenant</a>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="bars"><span></span><span></span><span></span><span></span></span>Techniciens certifiés — Abidjan & environs</div>
+        <h1>Installation TNT<br>& <em>Satellite</em><br>à Abidjan</h1>
+        <p class="hero-sub">Du toit à l'écran : installation, réglage et dépannage pour une image nette, sans coupure. Installation • Réglage • Dépannage • Maintenance • IPTV.</p>
+        <div class="hero-actions">
+          <a class="btn btn-rust" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
+          <a class="btn btn-line" href="tel:+2250707470833">Appelez maintenant</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="hero-technicien-antenne.jpg" alt="Technicien installant une antenne satellite sur un toit à Abidjan">
+        <span class="hero-media-tag">Intervention en direct — Abidjan</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="services">
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Installation TNT</span><span>Satellite</span><span>IPTV</span><span>Dépannage</span><span>Maintenance</span><span>Câblage électrique</span>
+    <span>Installation TNT</span><span>Satellite</span><span>IPTV</span><span>Dépannage</span><span>Maintenance</span><span>Câblage électrique</span>
+  </div>
+</div>
+
+<section class="services">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="pulse-dot"></span>Nos services</div>
-      <h2>Des solutions complètes pour votre réception TV</h2>
+      <div class="eyebrow"><span class="bars"><span></span><span></span><span></span><span></span></span>Nos services</div>
+      <h2>Trois métiers, un seul signal net</h2>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-media">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXyKYswLT4ivkknr7KudP_HVG9X0yIKxW9KhFaNt1cReMBtZKleAG3t-Trr1kAekdlfK3WurO8fuNYWM8oLhCYIZaB-wchvYe_scdwBznCFrtbyVQj4IZZsj2np02Vx1-Ljay8iUMVLEN4UwFQvFTDLSQFDlFsjBK-5VLakzOpBTWEe9ZbZt3rBg35VvlxTT-hWd90Mc3AVadBSEo4ZI2cYRw9DhXPZY_tbPUzlKv8=w900" alt="Antenne satellite">
-        </div>
-        <div class="service-body">
-          <span class="service-icon">📡</span>
-          <h3>Installation Satellite & TNT</h3>
-          <p>Installation et réglage de votre antenne pour une réception TV optimale.</p>
-        </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 30c8-10 24-10 32 0"/>
+          <path d="M24 30 L38 8"/>
+          <circle cx="24" cy="30" r="3"/>
+          <path d="M6 40 L14 40 M10 34 L10 40"/>
+        </svg>
       </div>
-      <div class="service-card reveal">
-        <div class="service-media">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVNGY6_TtbqbNfdqzRwBirmo-JpAsKKlfjbkwCjeDEwLhJauGCg77EjK2rYouuexY5PEO6vcG6fynDKkCl4HVfhSbHvg6ihzdkIgNm7A29vA5yfndUpyodxiWQW-8np4I5XzSrUXcPhxLws1VabnjrSIni8f8XZFphYhQMy3lI6sZTmXrNAg4L1G0QzOD7aLBVZqTThq4pJIMjF0n06fVsoRXXSxRDlqJEwFoL9=w900" alt="Interface IPTV sur téléviseur">
-        </div>
-        <div class="service-body">
-          <span class="service-icon">📺</span>
-          <h3>Installation & paramétrage IPTV</h3>
-          <p>Installation et configuration de votre solution IPTV sur vos appareils.</p>
-        </div>
+      <h3>Installation Satellite & TNT</h3>
+      <p>Installation et réglage de votre antenne pour une réception TV optimale.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="10" width="36" height="24" rx="1"/>
+          <path d="M16 40 L32 40 M24 34 L24 40"/>
+          <path d="M20 18 L30 22 L20 26 Z" fill="currentColor" stroke="none"/>
+        </svg>
       </div>
-      <div class="service-card reveal">
-        <div class="service-media">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWddDSy-x0UHgQZKAkebz1NfQ5xrQmS2oqPJDIDiBsXKA2KA6Rb6hSmyaqmnyMVIi--cnsVlP2uxGJVl5USEWOEWQtF5ET4ABKDIdcc1BD1WKaxoZYYff9e3VpMjlNROlHm7NgXeUS9Ws0IDMdOHrcxYTF5HPTRI_DRqM5qQlDBdhYuWXNcQFicIQ7ApJJRtbSVUEWfD1A7FMSQeOk6ErMMNh1o_zNEBE7O_XnuhkA=w900" alt="Techniciens Perfect Services TNT sur un toit">
-        </div>
-        <div class="service-body">
-          <span class="service-icon">🧰</span>
-          <h3>Dépannage & Maintenance</h3>
-          <p>Diagnostic et dépannage de vos équipements TV, antennes et câblage.</p>
-        </div>
+      <h3>Installation & paramétrage IPTV</h3>
+      <p>Installation et configuration de votre solution IPTV sur vos appareils.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 8 L40 18 L34 24 L24 14 Z"/>
+          <path d="M24 14 L10 28 L8 38 L18 36 L32 22"/>
+          <path d="M8 38 L14 32"/>
+        </svg>
       </div>
+      <h3>Dépannage & Maintenance</h3>
+      <p>Diagnostic et dépannage de vos équipements TV, antennes et câblage.</p>
     </div>
   </div>
 </section>
@@ -519,23 +341,20 @@
 <section class="why">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow"><span class="pulse-dot"></span>Pourquoi nous choisir</div>
-      <h2>Pourquoi choisir Perfect Services TNT ?</h2>
+      <div class="eyebrow">Pourquoi nous choisir</div>
+      <h2>Ce qui nous différencie</h2>
     </div>
     <div class="why-grid">
       <div class="why-item reveal">
-        <span class="icon">⚡</span>
-        <h3>Intervention rapide</h3>
+        <h3>Rapide.</h3>
         <p>Nous intervenons rapidement à Abidjan et dans les environs.</p>
       </div>
       <div class="why-item reveal">
-        <span class="icon">🛠️</span>
-        <h3>Techniciens qualifiés</h3>
+        <h3>Qualifié.</h3>
         <p>Un service professionnel pour l'installation, le réglage et le dépannage.</p>
       </div>
       <div class="why-item reveal">
-        <span class="icon">📺</span>
-        <h3>Solutions adaptées</h3>
+        <h3>Adapté.</h3>
         <p>TNT, satellite, IPTV et maintenance selon vos besoins.</p>
       </div>
     </div>
@@ -549,30 +368,30 @@
       <h2>Ils nous ont fait confiance</h2>
     </div>
     <div class="avatar-row reveal">
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUC9SoalM_2qo92hT-QQ0QS9RvgNBuZwWhtJnJIO9FXomWVu_qENCVXEbXCgka3nMiLI6R0-DCYx-ijx7TjJyXk0jTbuo5ihj94YwOOxErcSBbsd7BLeYHuPXI-RNr2n9lFUuA8BS_qciRw0_lOHQZX7-DzAtBBIRBWRtHJ-SWtFanoUDiryoJc1K3c2qZCtM0BwIqSGjvGsHsLt62QvtOxt2tYjkGrGb6MANYZVhc=w300" alt="Client satisfait"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXNCy-jWDs7fA7wVMF_3lUw_pvdoKJ3cp02U5b3banyVYUCOdCFrT5cF50WGYoHytUUYSB7Jl9Z2UKGA5AUwPKivgPXoG2RkN3wyekylP0RWMpxiieOybFkEay8U2FmGxdk7P5uMkvIrSfm7IwlS-_tCpwoEy9D1G5LEmKbLHuZc8oWmSoHDXJcT5bYnxfM0xpJEh_NE2Bajkxd2YUWHN2lUuS7IR6cw6jLx9bpXDA=w300" alt="Client satisfait"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQX3TKVbZbtKpk5Aa2mYZ23-01iv3X4m8krlTp2Pb1xispeQjX5y0ez4ff7hKPwbNJ1XiZEnrLhqgEN2fIg15oGrz8XTJZj6jPaWk_4TGsOKVyAOFzQj78nrbN8fvZ9ln5N1-bclUhb5BG5rIRnVDFqVVuCze0aHWuhWjtR_AG2BH5zv3B0TGW0V1voZInCrrHT1K2qKjeZs9zu2tRSLUTSwlxi2LGM1nul6txgp=w300" alt="Client satisfait"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWHVoTj2H8vUK5bPy2TbWBbjjcLVObMgWb0-GmX9qJc6yLJbBLcZiwTFQL3JZxiedtjuMihtrTKEw4ZhX7TbJWxWKm63wufhp2JTiURQzoKgUZX3fE2g0-PupuPpyqd03xTT9zmYjVop00SIC6g1KzZ_wyTo3aZd98ch-nVGbP4LmvNmSbIFA7vwNHX-0mvqr0hm3MSVKW-k3ASrGRyhXJ1GRE-Flv21NklIjAC=w300" alt="Client satisfait"></div>
+      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUC9SoalM_2qo92hT-QQ0QS9RvgNBuZwWhtJnJIO9FXomWVu_qENCVXEbXCgka3nMiLI6R0-DCYx-ijx7TjJyXk0jTbuo5ihj94YwOOxErcSBbsd7BLeYHuPXI-RNr2n9lFUuA8BS_qciRw0_lOHQZX7-DzAtBBIRBWRtHJ-SWtFanoUDiryoJc1K3c2qZCtM0BwIqSGjvGsHsLt62QvtOxt2tYjkGrGb6MANYZVhc=w300" alt="Client satisfait" loading="lazy"></div>
+      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXNCy-jWDs7fA7wVMF_3lUw_pvdoKJ3cp02U5b3banyVYUCOdCFrT5cF50WGYoHytUUYSB7Jl9Z2UKGA5AUwPKivgPXoG2RkN3wyekylP0RWMpxiieOybFkEay8U2FmGxdk7P5uMkvIrSfm7IwlS-_tCpwoEy9D1G5LEmKbLHuZc8oWmSoHDXJcT5bYnxfM0xpJEh_NE2Bajkxd2YUWHN2lUuS7IR6cw6jLx9bpXDA=w300" alt="Client satisfait" loading="lazy"></div>
+      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQX3TKVbZbtKpk5Aa2mYZ23-01iv3X4m8krlTp2Pb1xispeQjX5y0ez4ff7hKPwbNJ1XiZEnrLhqgEN2fIg15oGrz8XTJZj6jPaWk_4TGsOKVyAOFzQj78nrbN8fvZ9ln5N1-bclUhb5BG5rIRnVDFqVVuCze0aHWuhWjtR_AG2BH5zv3B0TGW0V1voZInCrrHT1K2qKjeZs9zu2tRSLUTSwlxi2LGM1nul6txgp=w300" alt="Client satisfait" loading="lazy"></div>
+      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWHVoTj2H8vUK5bPy2TbWBbjjcLVObMgWb0-GmX9qJc6yLJbBLcZiwTFQL3JZxiedtjuMihtrTKEw4ZhX7TbJWxWKm63wufhp2JTiURQzoKgUZX3fE2g0-PupuPpyqd03xTT9zmYjVop00SIC6g1KzZ_wyTo3aZd98ch-nVGbP4LmvNmSbIFA7vwNHX-0mvqr0hm3MSVKW-k3ASrGRyhXJ1GRE-Flv21NklIjAC=w300" alt="Client satisfait" loading="lazy"></div>
     </div>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="reveal">
-    <h2>Une TV qui ne capte plus, un décodeur à configurer ?</h2>
+    <h2>Signal capricieux ?<br>On règle ça.</h2>
     <p>Contactez Perfect Services TNT dès maintenant, réponse rapide sur WhatsApp.</p>
     <div class="btn-row">
-      <a class="btn btn-gold" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
-      <a class="btn btn-outline" href="tel:+2250707470833">Appelez maintenant</a>
+      <a class="btn btn-ink" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
+      <a class="btn btn-line" href="tel:+2250707470833">Appelez maintenant</a>
     </div>
   </div>
 </section>
 
-<footer>
-  Perfect Services TNT — Abidjan, Côte d'Ivoire · WhatsApp 07 07 47 08 33
-</footer>
+<footer>Perfect Services TNT — Abidjan, Côte d'Ivoire · WhatsApp 07 07 47 08 33</footer>
 
-<a class="float-wa" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">💬</a>
+<a class="float-wa" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.15c-.22.62-1.28 1.18-1.76 1.24-.45.06-1 .08-1.62-.1-.37-.11-.85-.28-1.46-.55-2.57-1.11-4.24-3.72-4.37-3.9-.13-.17-1.05-1.39-1.05-2.66 0-1.26.66-1.88.9-2.14.22-.24.48-.3.65-.3h.46c.15 0 .35-.06.54.42.22.55.73 1.9.8 2.04.06.14.1.3.02.48-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.68 1.12 1.46 1.81 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.06.15-.17.65-.75.82-1.01.17-.26.34-.21.56-.13.22.08 1.44.68 1.69.81.24.13.4.19.46.3.06.11.06.62-.16 1.24z"/></svg>
+</a>
 
 <script>
   const revealEls = document.querySelectorAll('.reveal');
