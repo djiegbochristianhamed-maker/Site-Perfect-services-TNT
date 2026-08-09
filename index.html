@@ -233,10 +233,33 @@
   .trust{ text-align:center; }
   .stars{ color: var(--rust); font-size:20px; letter-spacing:4px; margin-bottom:14px; }
   .trust h2{ font-size: clamp(1.7rem,3.4vw,2.4rem); font-weight:800; margin-bottom:48px; }
-  .avatar-row{ display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-  .avatar{ width:92px; height:92px; overflow:hidden; border:2px solid var(--ink); transition: transform .4s var(--ease); }
-  .avatar:hover{ transform: translateY(-6px); }
-  .avatar img{ width:100%; height:100%; object-fit:cover; filter: grayscale(0.15) contrast(1.05); }
+  .quote-row{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px;
+    text-align:left;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  @media (max-width:700px){ .quote-row{ grid-template-columns:1fr; } }
+  .quote-card{ border-top:3px solid var(--rust); padding-top:20px; }
+  .quote-card p{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size:18px;
+    line-height:1.55;
+    color: var(--ink);
+    margin-bottom:14px;
+  }
+  .quote-card cite{
+    font-family:'Big Shoulders Text', sans-serif;
+    font-style:normal;
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--stone);
+  }
 
   /* cta band */
   .cta-band{
@@ -390,11 +413,15 @@
       <div class="stars">★★★★★</div>
       <h2>Ils nous ont fait confiance</h2>
     </div>
-    <div class="avatar-row reveal">
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUC9SoalM_2qo92hT-QQ0QS9RvgNBuZwWhtJnJIO9FXomWVu_qENCVXEbXCgka3nMiLI6R0-DCYx-ijx7TjJyXk0jTbuo5ihj94YwOOxErcSBbsd7BLeYHuPXI-RNr2n9lFUuA8BS_qciRw0_lOHQZX7-DzAtBBIRBWRtHJ-SWtFanoUDiryoJc1K3c2qZCtM0BwIqSGjvGsHsLt62QvtOxt2tYjkGrGb6MANYZVhc=w300" alt="Client satisfait" loading="lazy"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXNCy-jWDs7fA7wVMF_3lUw_pvdoKJ3cp02U5b3banyVYUCOdCFrT5cF50WGYoHytUUYSB7Jl9Z2UKGA5AUwPKivgPXoG2RkN3wyekylP0RWMpxiieOybFkEay8U2FmGxdk7P5uMkvIrSfm7IwlS-_tCpwoEy9D1G5LEmKbLHuZc8oWmSoHDXJcT5bYnxfM0xpJEh_NE2Bajkxd2YUWHN2lUuS7IR6cw6jLx9bpXDA=w300" alt="Client satisfait" loading="lazy"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQX3TKVbZbtKpk5Aa2mYZ23-01iv3X4m8krlTp2Pb1xispeQjX5y0ez4ff7hKPwbNJ1XiZEnrLhqgEN2fIg15oGrz8XTJZj6jPaWk_4TGsOKVyAOFzQj78nrbN8fvZ9ln5N1-bclUhb5BG5rIRnVDFqVVuCze0aHWuhWjtR_AG2BH5zv3B0TGW0V1voZInCrrHT1K2qKjeZs9zu2tRSLUTSwlxi2LGM1nul6txgp=w300" alt="Client satisfait" loading="lazy"></div>
-      <div class="avatar"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWHVoTj2H8vUK5bPy2TbWBbjjcLVObMgWb0-GmX9qJc6yLJbBLcZiwTFQL3JZxiedtjuMihtrTKEw4ZhX7TbJWxWKm63wufhp2JTiURQzoKgUZX3fE2g0-PupuPpyqd03xTT9zmYjVop00SIC6g1KzZ_wyTo3aZd98ch-nVGbP4LmvNmSbIFA7vwNHX-0mvqr0hm3MSVKW-k3ASrGRyhXJ1GRE-Flv21NklIjAC=w300" alt="Client satisfait" loading="lazy"></div>
+    <div class="avatar-row reveal quote-row">
+      <div class="quote-card">
+        <p>« Merci beaucoup pour le travail. Vous êtes très sympathique. »</p>
+        <cite>— Client, Abidjan</cite>
+      </div>
+      <div class="quote-card">
+        <p>« Devis clair, intervention rapide dans la journée. Parfait. »</p>
+        <cite>— Client, Abidjan</cite>
+      </div>
     </div>
   </div>
 </section>
