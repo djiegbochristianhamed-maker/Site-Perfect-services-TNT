@@ -91,30 +91,16 @@
 
   /* hero */
   .hero{
+    position:relative;
+    min-height: 92vh;
     background: var(--ink);
     color: var(--cream-text);
-    padding: 64px 0 0;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
   }
-  .hero-grid{
-    display:grid; grid-template-columns: 1.05fr 0.95fr;
-    gap:48px; align-items:center;
-  }
-  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
-  .hero-copy h1{
-    font-size: clamp(2.6rem, 6vw, 4.4rem);
-    font-weight:800; line-height:0.94; margin:16px 0 22px;
-  }
-  .hero-copy h1 em{ font-style:normal; color: var(--rust); }
-  .hero-sub{
-    font-size:16px; color: rgba(248,242,230,0.72);
-    max-width:420px; margin-bottom:32px;
-  }
-  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
-
   .hero-media{
-    position:relative; overflow:hidden;
-    aspect-ratio: 5/4.3;
-    border: 1px solid rgba(248,242,230,0.15);
+    position:absolute; inset:0;
   }
   .hero-media img{
     width:100%; height:100%; object-fit:cover;
@@ -124,7 +110,7 @@
   }
   @keyframes tune-in{ to{ filter: grayscale(0) contrast(1) brightness(1); } }
   .hero-media::before{
-    content:''; position:absolute; inset:0; pointer-events:none;
+    content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
     background: repeating-linear-gradient(0deg, rgba(255,255,255,0.14) 0px, rgba(255,255,255,0.14) 1px, transparent 1px, transparent 3px);
     mix-blend-mode: overlay;
     animation: scan-fade 1.7s var(--ease) forwards;
@@ -132,18 +118,44 @@
   }
   @keyframes scan-fade{ to{ opacity:0; } }
   .hero-media::after{
-    content:''; position:absolute; left:0; right:0; height:8%; top:-12%;
+    content:''; position:absolute; left:0; right:0; height:8%; top:-12%; z-index:2;
     background: linear-gradient(180deg, transparent, rgba(255,255,255,0.55), transparent);
     animation: sweep 1s var(--ease) forwards;
     animation-delay:.15s;
   }
   @keyframes sweep{ to{ top:112%; } }
-  .hero-media-tag{
-    position:absolute; left:0; bottom:0;
+  .hero-scrim{
+    position:absolute; inset:0; z-index:3;
+    background: linear-gradient(180deg, rgba(23,19,15,0.15) 0%, rgba(23,19,15,0.1) 35%, rgba(23,19,15,0.88) 100%),
+                linear-gradient(90deg, rgba(23,19,15,0.55) 0%, rgba(23,19,15,0.05) 42%);
+  }
+  .hero-copy{
+    position:relative; z-index:4;
+    padding: 100px 0 56px;
+    max-width: 640px;
+  }
+  .hero-copy h1{
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight:800; line-height:0.94; margin:16px 0 22px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  }
+  .hero-copy h1 em{ font-style:normal; color: var(--rust); }
+  .hero-sub{
+    font-size:16px; color: rgba(248,242,230,0.85);
+    max-width:440px; margin-bottom:32px;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+  }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .hero-tag{
+    position:absolute; right:28px; bottom:28px; z-index:4;
     background: var(--rust); color: var(--cream-text);
     padding:8px 14px;
     font-family:'Big Shoulders Text', sans-serif; font-weight:700;
     font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+  }
+  @media (max-width:760px){
+    .hero-tag{ display:none; }
+    .hero-copy{ max-width:100%; }
   }
 
   /* ticker */
@@ -267,23 +279,22 @@
 </header>
 
 <section class="hero">
+  <div class="hero-media">
+    <img src="hero-technicien-antenne.jpg" alt="Technicien installant une antenne satellite sur un toit à Abidjan">
+  </div>
+  <div class="hero-scrim"></div>
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="bars"><span></span><span></span><span></span><span></span></span>Techniciens certifiés — Abidjan & environs</div>
-        <h1>Installation TNT<br>& <em>Satellite</em><br>à Abidjan</h1>
-        <p class="hero-sub">Du toit à l'écran : installation, réglage et dépannage pour une image nette, sans coupure. Installation • Réglage • Dépannage • Maintenance • IPTV.</p>
-        <div class="hero-actions">
-          <a class="btn btn-rust" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
-          <a class="btn btn-line" href="tel:+2250707470833">Appelez maintenant</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img src="hero-technicien-antenne.jpg" alt="Technicien installant une antenne satellite sur un toit à Abidjan">
-        <span class="hero-media-tag">Intervention en direct — Abidjan</span>
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="bars"><span></span><span></span><span></span><span></span></span>Techniciens certifiés — Abidjan & environs</div>
+      <h1>Installation TNT<br>& <em>Satellite</em><br>à Abidjan</h1>
+      <p class="hero-sub">Du toit à l'écran : installation, réglage et dépannage pour une image nette, sans coupure. Installation • Réglage • Dépannage • Maintenance • IPTV.</p>
+      <div class="hero-actions">
+        <a class="btn btn-rust" href="https://wa.me/2250707470833?text=Bonjour%20Perfect%20Services%20TNT%2C%20je%20souhaite%20demander%20une%20intervention." target="_blank" rel="noopener">Demander une intervention</a>
+        <a class="btn btn-line" href="tel:+2250707470833">Appelez maintenant</a>
       </div>
     </div>
   </div>
+  <span class="hero-tag">Intervention en direct — Abidjan</span>
 </section>
 
 <div class="ticker">
